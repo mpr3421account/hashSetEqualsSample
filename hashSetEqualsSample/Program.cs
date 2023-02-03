@@ -8,5 +8,8 @@ HashSet<Point> b = new HashSet<Point>();//validando igualdade num objeto tipo Va
 b.Add(new Point(3, 4));
 b.Add(new Point(5, 10));
 
-Product prod = new Product("Notebook", 1200.0);//verificando se o valor Notebook e preço constam no Product a ( Vai dar falso porque está validando através de referência de memória e não conteúdo)
+Product prod = new Product("Notebook", 1200.0);//GetHashcode e Equals implementados = True
 Console.WriteLine(a.Contains(prod));
+
+Point p = new Point(5, 10);
+Console.WriteLine(b.Contains(p));
