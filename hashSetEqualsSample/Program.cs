@@ -1,37 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
+﻿using hashSetEqualsSample.Entities;
 
-SortedSet<int> a = new SortedSet<int>() { 0, 2, 4, 5, 6, 8, 10 };
-SortedSet<int> b = new SortedSet<int>() { 5, 6, 7, 8, 9, 10 };
+HashSet<Product> a = new HashSet<Product>();//validando igualdade num objeto tipo Referência (Classe)
+a.Add(new Product("TV", 900.0));
+a.Add(new Product("Notebook", 1200.0));
 
-//union
-SortedSet<int> c = new SortedSet<int>(a);
-c.UnionWith(b);
-Console.WriteLine("Union");
-PrintCollection(c);
+HashSet<Point> b = new HashSet<Point>();//validando igualdade num objeto tipo Valor (Struct)
+b.Add(new Point(3, 4));
+b.Add(new Point(5, 10));
 
-//intersection
-SortedSet<int> d = new SortedSet<int>(a);
-d.IntersectWith(b);
-Console.WriteLine("Intersection");
-PrintCollection(d);
-
-//difference
-SortedSet<int> e = new SortedSet<int>(a);
-e.ExceptWith(b);
-Console.WriteLine("Difference");
-PrintCollection(e);
-
-
-
-
-
-
-static void PrintCollection<T>(IEnumerable<T> collection)
-{
-    foreach(T obj in collection)
-    {
-        Console.Write(obj + " ");
-    }
-    Console.WriteLine();
-}
+Product prod = new Product("Notebook", 1200.0);//verificando se o valor Notebook e preço constam no Product a ( Vai dar falso porque está validando através de referência de memória e não conteúdo)
+Console.WriteLine(a.Contains(prod));
